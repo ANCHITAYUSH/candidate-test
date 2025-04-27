@@ -4,9 +4,10 @@ import { EuiToast } from '@elastic/eui';
 
 interface NotificationProps {
   closeToast: () => void;
+  message: string;
 }
 
-const Notification: React.FC<NotificationProps> = ({ closeToast }) => {
+const Notification: React.FC<NotificationProps> = ({ closeToast, message }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       closeToast(); // Close toast after 3 seconds
@@ -22,7 +23,7 @@ const Notification: React.FC<NotificationProps> = ({ closeToast }) => {
       iconType="check"
       onClose={closeToast}
     >
-      It is a success notification!s
+      {message}
     </EuiToast>
   );
 };

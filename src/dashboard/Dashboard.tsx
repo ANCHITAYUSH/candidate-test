@@ -15,17 +15,17 @@ function Dashboard() {
   const [data, setData] = useState("No Data Yet");
 
   useEffect(() => {
-    fetchCatFact(); // Fetch once when component mounts
+    fetchCatFact();
 
     const interval = setInterval(() => {
       setRandomNumber(generateRandomNumber());
-    }, 5000); // every 5 seconds
+    }, 5000);
 
-    return () => clearInterval(interval); // Cleanup when unmounted
+    return () => clearInterval(interval); 
   }, []);
 
   const handleRandomNumberCardClick = () => {
-    setRandomNumber(generateRandomNumber()); // Refresh immediately on click
+    setRandomNumber(generateRandomNumber()); 
   };
 
   function generateRandomNumber(): number {
@@ -48,8 +48,8 @@ function Dashboard() {
     }
   };
 
-  const showToast = () => {
-    setData("Data Updated Dynamically!");
+  const showToast = (newData: string) => {
+    setData(newData);
     setIsToastVisible(true);
   };
 
@@ -57,7 +57,7 @@ function Dashboard() {
 
   return <> 
     {isToastVisible && (
-      <Notification closeToast={closeToast} />
+      <Notification closeToast={closeToast} message={data}/>
     )}
 
     <EuiFlexGroup gutterSize="l" style={{ marginTop: '1rem' }}>
@@ -83,7 +83,6 @@ function Dashboard() {
         <EuiCard
           icon={<EuiIcon size="xxl" type={`logoLogging`} />}
           title={`External Feed`}
-          // description="Replace the text here with a random fact from the following feed (https://catfact.ninja/fact) on load and when clicked."
           description={loading ? <EuiLoadingSpinner size="m" /> : catFact}
           onClick={fetchCatFact}
         />
@@ -94,7 +93,7 @@ function Dashboard() {
           icon={<EuiIcon size="xxl" type={`logoKibana`} />}
           title={`Notifications`}
           description="When clicked pop up a success toast notifcation"
-          onClick={showToast}
+          onClick={() => showToast("It is a success notification!")}
         />
       </EuiFlexItem>
     </EuiFlexGroup>

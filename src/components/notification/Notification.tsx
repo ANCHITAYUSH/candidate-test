@@ -1,30 +1,56 @@
-// Notification.tsx
 import React, { useEffect } from 'react';
 import { EuiToast } from '@elastic/eui';
 
+/**
+ * Props for the Notification component.
+ */
 interface NotificationProps {
-  closeToast: () => void;
+    /**
+     * Function to close the toast notification.
+     */
+    closeToast: () => void;
+    /**
+     * The message to display inside the toast.
+     */
+    message: string;
 }
 
-const Notification: React.FC<NotificationProps> = ({ closeToast }) => {
-  useEffect(() => {
+/**
+ * A reusable notification toast component that displays a success message
+ * and automatically disappears after 3 seconds.
+ *
+ * @component
+ * @param {NotificationProps} props - Props passed to the component
+ * @returns {JSX.Element} The rendered Notification component
+ */
+const Notification: React.FC<NotificationProps> = ({ closeToast, message }) => {
+
+    //#region Effects
+
+    useEffect(() => {
     const timer = setTimeout(() => {
-      closeToast(); // Close toast after 3 seconds
+        closeToast();
     }, 3000);
 
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, [closeToast]);
+    return () => clearTimeout(timer);
+    }, [closeToast]);
 
-  return (
-    <EuiToast
-      title="Success"
-      color="success"
-      iconType="check"
-      onClose={closeToast}
-    >
-      It is a success notification!s
-    </EuiToast>
-  );
+    //#endregion
+
+    //#region Render
+    
+    return (
+        <EuiToast
+            title="Success"
+            color="success"
+            iconType="check"
+            onClose={closeToast}
+        >
+            {message}
+        </EuiToast>
+    );
+
+    //#endregion
 };
 
 export default Notification;

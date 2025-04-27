@@ -1,0 +1,59 @@
+@import '../../shared/styles/_variables';
+
+.dfp-header {
+  height: 80px;
+  background-color: $white;
+  border-bottom: 2px solid $primary-blue;
+  padding: 12px 24px;
+  box-shadow: none;
+
+  .euiHeaderSectionItem {
+    h1 {
+      font-size: 18px;
+      font-weight: 500;
+      color: $primary-blue;
+      line-height: 1.2;
+      margin: 0;
+    }
+  }
+
+  &__user-avatar {
+    background-color: $white !important;
+  }
+
+  &__user-button {
+    min-width: 200px;
+    height: auto !important;
+    
+    &:hover, &:focus {
+      background: transparent;
+    }
+  }
+
+  &__user-name {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: $primary-blue;
+  }
+
+  &__user-role {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: $primary-blue;
+
+    &-separator {
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+
+  &__user-popover-button {
+    align-self: start;
+
+    .euiButtonEmpty--primary {
+      color: $primary-grey-light;
+    }
+  }
+} 

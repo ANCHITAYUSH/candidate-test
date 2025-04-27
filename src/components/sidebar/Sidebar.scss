@@ -1,0 +1,185 @@
+@import '../../shared/styles/_variables';
+
+.dfp-sidebar {
+  width: $sidebar-width;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  
+  &{
+    text-decoration: none;
+  }
+
+  &.provider-view {
+    background-color: $primary-grey;
+    
+    .dfp-sidebar__header {
+      .euiHeaderLogo__icon {
+        background: $primary-grey;
+      }
+    }
+  }
+
+  &.customer-view, &.impersonating-view {
+    background-color: $primary-blue;
+    
+    .dfp-sidebar__header {
+      .euiHeaderLogo__icon {
+        background: $primary-blue;
+      }
+    }
+  }
+
+  &__header {
+    padding: 16px;
+
+    .euiHeaderLogo {
+      background: inherit !important;
+      &__icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__text {
+        color: $white;
+        font-size: 24px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    background: transparent;
+
+    .euiIcon--small {
+      fill: $white;
+      width: 16px;
+      height: 16px;
+      margin-right: 20px;
+      rotate: 90deg;
+    }
+
+    .euiSideNavItemButton-isOpen {
+      .euiIcon--small {
+        rotate: 180deg;
+      }
+    }
+
+    .euiSideNavItem {
+      &Button__label {
+        color: $white;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      &__icon {
+        color: $white;
+      }
+
+      &Button-isSelected {
+
+        .euiSideNavItemButton__label {
+          color: $primary-green-light;
+          text-decoration: none;
+          font-weight: 700;
+        }
+        
+        .euiIcon {
+          // Doesn't work for SVG's rendered in IMG tags. Need to investigate.
+          color: $primary-green-light;
+          filter: $primary-green-light-filter
+        }
+      }
+    }
+
+    .euiSideNavItem--root {
+      .euiSideNavItemButton__label {
+        padding: 12px 4px;
+      }
+    }
+
+    .euiSideNavItem--trunk > .euiSideNavItemButton--isClickable:not(.euiSideNavItemButton-isSelected):hover {
+      position: relative;
+      box-shadow: inset 500px 0 0 -270px rgba($primary-green-light, 0.15),
+                  -20px 0px rgba($primary-green-light, 0.15);
+      
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: $primary-green-light;
+      }
+      
+      &::before {
+        left: -8px;
+      }
+      
+      // Set right slightly wider to get optical balance
+      &::after {
+        right: 8px;
+        width: 5px !important;
+      }
+    }
+
+    // Handle submenu items differently
+    .euiSideNavItem--branch > .euiSideNavItemButton--isClickable:hover {
+      position: relative;
+      box-shadow: inset 500px 0 0 -270px rgba($primary-green-light, 0.15),
+                  -20px 0px rgba($primary-green-light, 0.15);
+
+      // Use a border, since EUI already uses the ::after property for sub items
+      width: calc(100% - 8px);
+      border-right: 5px solid $primary-green-light !important;
+      
+      // Set right slightly wider to get optical balance
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: $primary-green-light;
+        left: -24px;
+      }
+    }
+  }
+
+  &__footer {
+    padding: 16px;
+  }
+
+  &__logout-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: $white;
+    font-size: 18px;
+    font-weight: 700;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+} 
+
+.euiPage--paddingMedium .euiPageSideBar {
+  min-width: $sidebar-width;
+  padding: 0;
+}
+
+.euiSideNavItem--root > .euiSideNavItem__items {
+  margin-left: 16px;
+}

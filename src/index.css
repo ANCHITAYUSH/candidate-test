@@ -1,0 +1,128 @@
+@import '@elastic/eui/dist/eui_theme_light.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --font-family-default: Inter, Montserrat, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-heading: Inter, Roboto Slab, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-paragraph: Inter, Montserrat, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --background-color: rgb(249, 249, 255);
+  --color-body: #888888;
+  --color-primary: rgb(24, 78, 255);
+  --color-light-blue: rgb(25, 75, 255, 0.5);
+  --color-red: #F30D0D;
+  --color-border:#B6B6B6;
+  /* --hover-brightness: 1.2; */
+  --font-size: 14px;
+
+  --brand-color-blue: rgb(25, 75, 255);
+  --brand-color-red: rgb(255, 20, 20);
+  --brand-color-teal: rgb(0, 255, 205);
+  --brand-color-grey: rgb(230, 230, 230);
+  --brand-color-black: rgb(0, 0, 0);
+}
+
+html {
+  background: unset !important;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-family-default) !important;
+  font-size: var(--font-size);
+  background: unset !important;
+  color: var(--color-body);
+}
+
+/* reset eui_theme_light */
+input, textarea, select, button,
+.euiButtonEmpty,
+.euiFieldSearch,
+.euiSuperSelectControl,
+.euiComboBoxPill--plainText,
+.euiComboBoxOption__content,
+.euiButtonEmpty__text.euiFilterButton__text-hasNotification {
+  font-family: var(--font-family-default);
+}
+
+.euiLink.euiLink--subdued:hover,
+.euiLink.euiLink--subdued:focus,
+.euiTableHeaderButton:hover .euiTableCellContent__text,
+.euiTableHeaderButton:focus .euiTableCellContent__text,
+.euiFilterButton:hover:not(:disabled) .euiFilterButton__textShift,
+.euiFilterButton:focus:not(:disabled) .euiFilterButton__textShift,
+.euiTab:focus,
+.euiSelectableListItem-isFocused:not([aria-disabled='true']) .euiSelectableListItem__text,
+.euiSelectableListItem:hover:not([aria-disabled='true']) .euiSelectableListItem__text,
+.euiSuperSelect__item:hover,
+.euiFilterSelectItem:hover,
+.euiFilterSelectItem-isFocused,
+.euiContextMenuItem:hover,
+.euiContextMenuItem:focus,
+.euiPaginationButton-isActive.euiPaginationButton-isActive,
+.euiPaginationButton-isActive.euiPaginationButton-isActive:hover {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.euiTableRowCell {
+  color: unset;
+}
+
+.euiTableRow:hover {
+  color: var(--color-primary)
+}
+
+.euiComboBox.euiComboBox-isOpen .euiComboBox__inputWrap {
+  background-image: linear-gradient(to top, var(--brand-color-blue), var(--brand-color-blue) 2px, transparent 2px, transparent 100%);
+}
+
+.euiSuperSelect__item,
+.euiComboBoxPill.euiComboBoxPill--plainText,
+.euiComboBoxPlaceholder {
+  color: var(--color-primary);
+}
+
+.euiFilterButton-hasActiveFilters {
+  font-weight: unset;
+}
+
+.euiSelectableListItem__append,
+.euiComboBoxOption__contentWrapper .euiComboBoxOption__enterBadge,
+.euiFilterSelectItem .euiFlexItem.euiFlexItem--flexGrowZero {
+  display: none;
+}
+.euiPopoverTitle--paddingSmall {
+  padding: 0;
+}
+
+.euiSuperSelect__listbox,
+.euiComboBoxOptionsList__rowWrap {
+  padding: 20px;
+}
+.euiComboBoxOptionsList__rowWrap > div {
+  height: 100% !important;
+  overflow: unset !important;
+}
+.euiComboBoxOptionsList__rowWrap > div > div {
+  height: 100% !important;
+}
+
+.euiButton--primary.euiButton--fill:not([class*=isDisabled]):focus,
+.euiButton--primary.euiButton--fill:not([class*=isDisabled]):focus-within,
+.euiButton--primary.euiButton--fill:not([class*=isDisabled]):hover {
+  background-color: var(--brand-color-blue);
+  border-color: var(--brand-color-blue);
+}
+.euiButton--primary.euiButton--fill {
+  background-color: var(--brand-color-blue);
+  border-color: var(--brand-color-blue);
+}
+.euiButtonEmpty--primary {
+  color: var(--brand-color-blue);
+}
+.euiButtonEmpty:hover:not([class*='isDisabled']),
+.euiButtonEmpty:focus {
+  text-decoration: unset;
+}

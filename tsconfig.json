@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    /* Type Checking */
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": false,
+    "strictNullChecks": true,
+
+    /* Modules */
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": [
+      "jest",
+      "@types/node"
+    ],
+
+    /* Emit */
+    "declaration": true,
+    "declarationMap": true,
+    "importHelpers": false,
+    "noEmitOnError": true,
+    "outDir": "./dist",
+    "sourceMap": true,
+
+    /* JavaScript Support */
+    "allowJs": true,
+
+    /* Interop Constraints */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Backwards Compatibility */
+    "suppressImplicitAnyIndexErrors": true,
+
+    /* Language and Environment */
+    "target": "esnext",
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+
+    /* Projects */
+    "composite": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  },
+  "include": [
+    "src"
+  ]
+}

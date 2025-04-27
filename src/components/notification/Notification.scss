@@ -1,0 +1,47 @@
+// /* notification.scss */
+// .app-container {
+//     margin: 20px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100vh;
+//     position: relative; /* Needed for absolute positioning of the toast */
+//   }
+  
+//   .euiCard__clickable {
+//     cursor: pointer;
+//     transition: transform 0.2s ease-in-out;
+//   }
+  
+//   .euiCard__clickable:hover {
+//     transform: scale(1.05);
+//   }
+  
+//   .data-container {
+//     margin-top: 20px;
+//     text-align: center;
+//   }
+  
+//   .backdrop {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     background: rgba(0, 0, 0, 0.5); /* Semi-transparent backdrop */
+//     z-index: 999; /* Ensure it stays below the toast */
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+  
+//   .euiToast {
+//     position: fixed; /* Position the toast fixed at the center */
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%); /* Center the toast */
+//     z-index: 1000; /* Ensure the toast is above everything else */
+//     width: auto; /* Adjust width based on content */
+//   }
+  

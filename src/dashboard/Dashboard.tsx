@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Form from "src/components/form/Form";
 import Notification from '../components/notification/Notification';
+import "./Dashboard.scss";
 
 function Dashboard() {
  
@@ -55,18 +56,19 @@ function Dashboard() {
 
   const closeToast = () => setIsToastVisible(false);
 
-  return <> 
+  return <div className="container"> 
     {isToastVisible && (
       <Notification closeToast={closeToast} message={data}/>
     )}
 
-    <EuiFlexGroup gutterSize="l" style={{ marginTop: '1rem' }}>
+    <EuiFlexGroup gutterSize="l" style={{ margin: '1rem' }}>
       <EuiFlexItem>
         <EuiCard
           icon={<EuiIcon size="xxl" type={`logoBeats`} />}
           title={`Random Number Card`}
           description={`Number: ${randomNumber}`}
           onClick={handleRandomNumberCardClick}
+          className={"card-style"}
         />
       </EuiFlexItem>
 
@@ -76,6 +78,7 @@ function Dashboard() {
           title={`Flyout Form`}
           description="When clicked flyout a form with 2 input fields and submit button"
           onClick={openFlyout}
+          className={"card-style"}
         />
       </EuiFlexItem>
 
@@ -85,6 +88,7 @@ function Dashboard() {
           title={`External Feed`}
           description={loading ? <EuiLoadingSpinner size="m" /> : catFact}
           onClick={fetchCatFact}
+          className={"card-style"}
         />
       </EuiFlexItem>
 
@@ -94,6 +98,7 @@ function Dashboard() {
           title={`Notifications`}
           description="When clicked pop up a success toast notifcation"
           onClick={() => showToast("It is a success notification!")}
+          className={"card-style"}
         />
       </EuiFlexItem>
     </EuiFlexGroup>
@@ -101,7 +106,7 @@ function Dashboard() {
     {isFlyoutOpen && (
       <EuiFlyout onClose={closeFlyout} size="s" ownFocus>
         <EuiFlyoutHeader>
-          <h2>Dynamic Form</h2>
+          <h2>Flyout Form</h2>
         </EuiFlyoutHeader>
         <EuiFlyoutBody>
           <Form closeFlyout={closeFlyout} />
@@ -109,12 +114,12 @@ function Dashboard() {
       </EuiFlyout>
     )}
 
-    <EuiText style={{ marginTop: '2rem' }}>
+    <EuiText style={{ margin: '2rem' }}>
       <p>Use the following UI library <a href="https://eui.elastic.co/v34.6.0/" target="_blank">eui.elastic.co</a> to form part of your solution</p>
 
       <p>Bonus challenge. Using the following <a href={staticImages.design} target="_blank">design</a>, retheme the site similarly to that found in the design, utilising the same colour palettes and look and feel. </p>
     </EuiText>
-  </>
+  </div>
 }
 
 export default Dashboard

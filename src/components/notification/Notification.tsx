@@ -1,31 +1,53 @@
-// Notification.tsx
-import React, { useEffect } from 'react';
-import { EuiToast } from '@elastic/eui';
+import React, { useEffect, useRef } from 'react';
+import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiToast } from '@elastic/eui';
+import './Notification.scss';
 
 interface NotificationProps {
-  closeToast: () => void;
-  message: string;
-}
-
+    closeToast: () => void;
+    message: string;
+  }
+  
 const Notification: React.FC<NotificationProps> = ({ closeToast, message }) => {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      closeToast(); // Close toast after 3 seconds
-    }, 3000);
+    const popupRef = useRef<HTMLDivElement>(null);
 
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, [closeToast]);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            closeToast();
+        }, 3000);
 
-  return (
-    <EuiToast
-      title="Success"
-      color="success"
-      iconType="check"
-      onClose={closeToast}
-    >
-      {message}
-    </EuiToast>
-  );
+        return () => clearTimeout(timer);
+    }, [closeToast]);
+
+    const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
+            closeToast(); 
+        }
+    };
+
+    return (
+        <div className="toastBackdrop" onClick={handleBackdropClick}>
+            <div className="toastPopup" ref={popupRef}>
+                <EuiToast
+                title="Success"
+                color="success"
+                iconType="check"
+                onClose={closeToast}
+                className="customToast"
+                >
+                    {message}
+                    <EuiFlexGroup justifyContent="flexEnd" gutterSize="s">
+                        <EuiFlexItem grow={false}>
+                            <EuiButton size="s" 
+                            className='customCloseButton' 
+                            onClick={closeToast}>
+                                Close
+                            </EuiButton>
+                        </EuiFlexItem>
+                    </EuiFlexGroup>
+                </EuiToast>
+            </div>
+        </div>
+    );
 };
 
 export default Notification;

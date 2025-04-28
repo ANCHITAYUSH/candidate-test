@@ -8,10 +8,10 @@ function App() {
   return (
     <EuiPage
       paddingSize="none"
-      style={{ minHeight: '100vh', width: '100%', backgroundColor: 'white' }}
+      style={{ minHeight: '100vh', width: '100%', backgroundColor: '#d6e9e4' }}
     >
       <Sidebar />
-      <EuiPageBody paddingSize="l">
+      <EuiPageBody>
         <Header />
         <EuiFlexItem>
           <Dashboard />

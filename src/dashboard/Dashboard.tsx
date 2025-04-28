@@ -6,36 +6,54 @@ import Form from "src/components/form/Form";
 import Notification from '../components/notification/Notification';
 import "./Dashboard.scss";
 
+// #region Dashboard Component
 function Dashboard() {
  
+  // #region States
+
   const [randomNumber, setRandomNumber] = useState<number>(generateRandomNumber());
   const [isFlyoutOpen, setIsFlyoutOpen] = useState(false);
   const [catFact, setCatFact] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [isToastVisible, setIsToastVisible] = useState(false);
-  const [data, setData] = useState("No Data Yet");
+  const [data, setData] = useState("");
+
+  // #endregion
+
+  // #region Lifecycle Methods
 
   useEffect(() => {
-    fetchCatFact();
+    fetchCatFact(); // Fetch a cat fact when component mounts
 
+    // Update random number every 5 seconds
     const interval = setInterval(() => {
       setRandomNumber(generateRandomNumber());
     }, 5000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
 
+  // #endregion
+
+  // #region Helper Functions
+
+  // Handle Random Number Card Click
   const handleRandomNumberCardClick = () => {
     setRandomNumber(generateRandomNumber()); 
   };
 
+  // Generate a random number between 1 and 100
   function generateRandomNumber(): number {
     return Math.floor(Math.random() * 100) + 1;
   }
 
+  // Open Flyout
   const openFlyout = () => setIsFlyoutOpen(true);
+
+  // Close Flyout
   const closeFlyout = () => setIsFlyoutOpen(false);
 
+  // Fetch a random cat fact from an external API
   const fetchCatFact = async () => {
     try {
       setLoading(true);
@@ -49,12 +67,18 @@ function Dashboard() {
     }
   };
 
+  // Show a toast notification
   const showToast = (newData: string) => {
     setData(newData);
     setIsToastVisible(true);
   };
 
+  // Close the toast notification
   const closeToast = () => setIsToastVisible(false);
+
+  //#endregion
+
+  // #region Render
 
   return <div className="container"> 
     {isToastVisible && (
@@ -97,7 +121,7 @@ function Dashboard() {
           icon={<EuiIcon size="xxl" type={`logoKibana`} />}
           title={`Notifications`}
           description="When clicked pop up a success toast notifcation"
-          onClick={() => showToast("It is a success notification!")}
+          onClick={() => showToast("It is a success notification! It will get close after 3 seconds. If you want to close it click on the close button.")}
           className={"card-style"}
         />
       </EuiFlexItem>
@@ -120,6 +144,10 @@ function Dashboard() {
       <p>Bonus challenge. Using the following <a href={staticImages.design} target="_blank">design</a>, retheme the site similarly to that found in the design, utilising the same colour palettes and look and feel. </p>
     </EuiText>
   </div>
+
+  // #endregion
+
 }
+// #endregion
 
 export default Dashboard
